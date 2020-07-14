@@ -46,11 +46,18 @@ namespace ProyectoSanoCenter.Controllers
         }
 
         // GET: Retos/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+
+            EjercicioRetoVM ejercicioRetoVM = new EjercicioRetoVM
+            {
+                Ejercicios = await _context.Ejercicio.ToListAsync(),
+                Reto = new Reto()
+
+            };
             ViewData["EntrenadorId"] = new SelectList(_context.Entrenador, "Id", "Id");
             ViewData["EjercicioId"] = new SelectList(_context.Ejercicio, "Id", "Id");
-            return View();
+            return View(ejercicioRetoVM);
         }
 
         // POST: Retos/Create
