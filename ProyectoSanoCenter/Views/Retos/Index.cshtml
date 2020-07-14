@@ -68,14 +68,14 @@
 
                         <button data-toggle="collapse" href="#collapse-@reto.Id" type="button" onclick="enviarBusqueda()" class="btn btn-danger">@reto.NombreReto</button>
                         <div class="collapse" id="collapse-@reto.Id">
-                                                       <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 18rem;">
                                 <div class="card-body">
 
                                     <h5>@reto.NombreReto</h5>
 
-                                        <p>@reto.Series</p>
-                                        <p>@reto.Repeticiones</p>
-                                        <p>@reto.Dificultad</p>
+                                    <p>@reto.Series</p>
+                                    <p>@reto.Repeticiones</p>
+                                    <p>@reto.Dificultad</p>
                                     @foreach (var Ejercicios in reto.Ejercicios)
                                     {
 
@@ -85,21 +85,30 @@
                                     <p>@reto.FechaLimite.ToString("dd/MM/yyyy")</p>
 
                                     @*@if (reto.EjercicioRetos.Count > 0)
-        {
-            <p><b>EJERCICIOS</b></p>
-            @foreach (var EjercicioRetos in reto.EjercicioRetos)
-            {
-                <p>@reto.Id</p>
-            }
-        }*@
+                                        {
+                                            <p><b>EJERCICIOS</b></p>
+                                            @foreach (var EjercicioRetos in reto.EjercicioRetos)
+                                            {
+                                                <p>@reto.Id</p>
+                                            }
+                                        }*@
 
                                 </div>
                             </div>
-                            <form id="formBusqueda">
+                            @*<form id="formBusqueda">
 
-                                <button type="button" onclick="enviarBusqueda()" class="btn btn-danger">Apuntarme</button>
+                                    <button type="button" onclick="enviarBusqueda()" class="btn btn-danger">Apuntarme</button>
 
-                            </form>
+                                </form>*@
+                            <div class="contenidoNombreReto">
+
+                                <div id="contenidoReto">
+
+                                </div>
+
+                                <button id="boton" class="btn btn-dark">Apuntarme</button>
+
+                            </div>
                         </div>
                     </div>
                     @if (User.IsInRole("admin"))

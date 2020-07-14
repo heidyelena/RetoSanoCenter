@@ -25,6 +25,11 @@ namespace ProyectoSanoCenter.Controllers
             var applicationDbContext = _context.Reto.Include(r => r.Entrenador).Include(x => x.Ejercicios);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> MisRetos()
+        {
+            var applicationDbContext = _context.Reto.Include(r => r.Entrenador).Include(x => x.Ejercicios);
+            return View(await applicationDbContext.ToListAsync());
+        }
 
         // GET: Retos/Details/5
         public async Task<IActionResult> Details(int? id)
