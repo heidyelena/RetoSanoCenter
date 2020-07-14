@@ -28,7 +28,7 @@ namespace ProyectoSanoCenter.Controllers
         // GET: Gimnasios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            int numero = 2;
+
             if (id == null)
             {
                 return NotFound();
