@@ -65,10 +65,21 @@ namespace ProyectoSanoCenter.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Imagen,NombreReto,Dificultad,Series,Repeticiones,FechaLimite,EntrenadorId")] Reto reto)
+        public async Task<IActionResult> Create([Bind("Id,Imagen,NombreReto,Dificultad,Series,Repeticiones,FechaLimite,EntrenadorId")] Reto reto, string[] ejercicios)
         {
+
             if (ModelState.IsValid)
-            {
+            {                
+           
+                List<Ejercicio> ejerciciosLista = new List<Ejercicio>();
+
+                for (int i = 0; i < ejercicios.Length; i++)
+                {
+                    ejerciciosLista.Add(await _context.Ejercicio.FindAsync(Convert.ToInt32(ejercicios[i])));
+                }
+               
+                reto.Ejercicios = ejerciciosLista;
+
                 _context.Add(reto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
