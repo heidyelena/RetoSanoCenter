@@ -76,10 +76,10 @@
                                         <p>@reto.Series</p>
                                         <p>@reto.Repeticiones</p>
                                         <p>@reto.Dificultad</p>
-                                    @foreach (var EjercicioRetos in reto.EjercicioRetos)
+                                    @foreach (var Ejercicios in reto.Ejercicios)
                                     {
 
-                                        <p>@EjercicioRetos.Ejercicio.Id)</p>
+                                        <p>@Ejercicios.NombreEjercicio)</p>
                                     }
 
                                     <p>@reto.FechaLimite.ToString("dd/MM/yyyy")</p>

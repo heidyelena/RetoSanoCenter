@@ -22,7 +22,7 @@ namespace ProyectoSanoCenter.Controllers
         // GET: Retos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Reto.Include(r => r.Entrenador).Include(x => x.EjercicioRetos).ThenInclude(x => x.Ejercicio);
+            var applicationDbContext = _context.Reto.Include(r => r.Entrenador).Include(x => x.Ejercicios);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -49,6 +49,7 @@ namespace ProyectoSanoCenter.Controllers
         public IActionResult Create()
         {
             ViewData["EntrenadorId"] = new SelectList(_context.Entrenador, "Id", "Id");
+            ViewData["EjercicioId"] = new SelectList(_context.Ejercicio, "Id", "Id");
             return View();
         }
 
